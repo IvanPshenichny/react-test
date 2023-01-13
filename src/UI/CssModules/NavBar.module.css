@@ -1,0 +1,14 @@
+.bar{
+    grid-area:n;
+    background-color: darkgray;
+padding: 10px};
+.colour {background-color: darkgray;}
+
+.item {
+    color: whitesmoke;
+    text-decoration: none;
+}
+.active {
+    color: gold;
+    text-decoration: none;
+}
