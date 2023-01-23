@@ -1,56 +1,69 @@
-import React, {useState} from "react";
-import styless from "./CssModules/Users.module.css"
-import styles from "./CssModules/Content.module.css"
+import React, { useState, useEffect } from "react";
+import styless from "./CssModules/Users.module.css";
+import styles from "./CssModules/Content.module.css";
 
 const InitialState = {
-  InitialUsersState: [
-  {id:1,Name: 'Ivan'},
-  {id:2,Name: 'Viktor'},
-  {id:3,Name: 'Boris'},
-  {id:4,Name: 'Gaga'}
-],
-NewUserName: '',}
+  NewUserName: "",
+};
 
-var UsersState = [];
+var UsersList = [];
+localStorage.setItem("usersState", JSON.stringify([]))
 
-function UserManagment () {
-  const [deleteUsersState,deleteUser] = useState(InitialState.InitialUsersState);
-  const [addUsersState,addUser] = useState(InitialState.InitialUsersState);
-  const [addUserNameState,changeUserName] = useState(InitialState.NewUserName);
+function UserManagment() {
+  
+  const State = JSON.parse(localStorage.getItem("usersState"));
+  const [usersState, changeUsersList] = useState(State);
+  const [addUserNameState, changeUserName] = useState(InitialState.NewUserName);
 
-   UsersState = [...new Set (addUsersState.concat(deleteUsersState))];
+  useEffect (() => { 
+        changeUsersList(State)}, [])
+    useEffect (() => { 
+      localStorage.setItem("usersState", JSON.stringify(usersState))}, [usersState]);
 
-  // const DeleteUsers = () => {deleteUser(deleteUsersState.splice(1,3))}
-    
-  const AddUsers = () => {addUser(addUsersState.concat({id:UsersState.length +1,Name: addUserNameState})); changeUserName('')}
-  const ChangeUserName = (e) => {changeUserName(e.target.value)}
+      
 
-    var UsersList = UsersState.map(u=>{ return(
-      <div className={styless.users}> 
-      <img src ='https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png' /> 
-      <button>Delete</button>  
-      <div>{u.Name}</div> 
+  const DeleteUsers = (id) => {
+    changeUsersList(usersState.filter((item) => item.id !== id));
+  };
+
+  const AddUsers = () => {
+    changeUsersList(
+      usersState.concat({ id: usersState.length + 1, Name: addUserNameState })
+    );
+    changeUserName("");
+  };
+  const ChangeUserName = (e) => {
+    changeUserName(e.target.value);
+  };
+
+  UsersList = usersState;
+
+  const Users = usersState.map((u) => {
+    return (
+      <div className={styless.users}>
+        <img src="https://www.pngall.com/wp-content/uploads/5/User-Profile-PNG-High-Quality-Image.png" />
+        <button onClick={() => DeleteUsers(u.id)}>Delete</button>
+        <div>{u.Name}</div>
       </div>
-      )})
+    );
+  });
 
   return (
     <div className={styles.content}>
+      <div>{Users}</div>
       <div>
-       {UsersList}
+        <textarea
+          placeholder="Add Name"
+          value={addUserNameState}
+          onChange={ChangeUserName}>
+
+          </textarea>
       </div>
       <div>
-       <textarea
-       placeholder='Add Name' 
-       value = {addUserNameState}
-       onChange = {ChangeUserName}>
-       </textarea>
+        <button onClick={AddUsers}>Add new user</button>
       </div>
-      <div>
-       <button onClick={AddUsers}>Add new user</button>
-      </div>
-      
     </div>
   );
-};
+}
 export { UserManagment };
-export {UsersState}
+export { UsersList };

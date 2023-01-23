@@ -7,6 +7,7 @@ import { Content } from './UI/Content';
 import {BrowserRouter, Routes, Route} from 'react-router-dom';
 import { Users } from './UI/Users';
 import { UserManagment } from './UI/UserManagment';
+import { ToDo } from './UI/ToDoList';
 
 const App = () => {
   return (
@@ -16,6 +17,7 @@ const App = () => {
       <NavBar/>
       <Content/>
       <Routes>
+      <Route path ='/ToDoList/' element = {<ToDo/>}/>
       <Route path ='/UserManagment/' element = {<UserManagment/>}/>
       <Route path ='/Users/' element = {<Users/>}/>
       </Routes>
