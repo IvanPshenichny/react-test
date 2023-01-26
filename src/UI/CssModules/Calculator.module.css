@@ -1,0 +1,31 @@
+.mainButtons {
+    color: rgb(18, 18, 18);
+    height: 21px;
+    width: 40px;
+    
+   
+    
+}
+.zerroButton {
+    color: rgb(0, 0, 0);
+    height: 21px;
+    width: 80px;
+    
+}
+.headButton {
+    color: rgb(18, 18, 18);
+    height: 28px;
+    width: 40px;
+}
+.textArea {
+    height: 21px;
+    width: 153px; 
+}
+.deleteButton {
+    height: 25px;
+    width: 30px; 
+}
+.memory {
+    height: 25px;
+    width: 80px;
+}

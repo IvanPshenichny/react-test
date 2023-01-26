@@ -1,3 +1,9 @@
-.header{
-    grid-area:h;
-    background-color:darkgray;}
+.header {
+  grid-area: h;
+  background-color: darkgray;
+}
+.header img {
+    padding: 10px;
+  height: 65px;
+  width: 150px;
+}

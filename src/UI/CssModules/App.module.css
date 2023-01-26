@@ -1,6 +1,6 @@
 .app{display:grid;
 grid-template-areas:
-'h h'
+'h c'
 'n c';
 grid-template-columns: 185px 2fr;
 grid-template-rows: 2fr 12fr;}
