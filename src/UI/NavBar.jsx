@@ -12,7 +12,7 @@ const NavBar = () => {
       >
         UserManagment
       </NavLink>
-      
+
       <div> </div>
       <div> </div>
       <NavLink

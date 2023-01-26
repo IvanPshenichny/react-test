@@ -6,7 +6,7 @@ import styless from "./CssModules/Calculator.module.css";
 function Calculator() {
   const [num, setNum] = useState("");
   const [oldNum, setOldNum] = useState(0);
-  const [operator, setOperator] = useState('');
+  const [operator, setOperator] = useState("");
   const [memory, setMemory] = useState();
 
   const buttonClick = (e) => {
@@ -35,29 +35,27 @@ function Calculator() {
     return;
   };
   const operatorHandler = (e) => {
-    if (operator === '') {
-    setOldNum(num);
-    setNum("");
-    setOperator("");
-    setOperator(e.target.value);
-    
-  }
-  return;
-};
+    if (operator === "") {
+      setOldNum(num);
+      setNum("");
+      setOperator("");
+      setOperator(e.target.value);
+    }
+    return;
+  };
   const calculate = () => {
-
     if (operator === "÷") {
       setNum(+oldNum / +num);
-      setOperator ('');
+      setOperator("");
     } else if (operator === "×") {
       setNum(+oldNum * +num);
-      setOperator ('');
+      setOperator("");
     } else if (operator === "-") {
       setNum(+oldNum - +num);
-      setOperator ('');
+      setOperator("");
     } else if (operator === "+") {
       setNum(+oldNum + +num);
-      setOperator ('')
+      setOperator("");
     } else return setNum(num);
   };
   const addMemory = () => {

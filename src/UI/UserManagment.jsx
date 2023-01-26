@@ -22,13 +22,13 @@ function UserManagment() {
   };
 
   const AddUsers = () => {
-    if (addUserNameState.length>0) {
-    changeUsersList(
-      usersState.concat({ id: usersState.length + 1, Name: addUserNameState })
-    );
-    changeUserName("");
-  }
-};
+    if (addUserNameState.length > 0) {
+      changeUsersList(
+        usersState.concat({ id: usersState.length + 1, Name: addUserNameState })
+      );
+      changeUserName("");
+    }
+  };
   const ChangeUserName = (e) => {
     changeUserName(e.target.value);
   };
