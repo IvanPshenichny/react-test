@@ -16,6 +16,12 @@ function Calculator() {
     }
     setNum(num + value);
   };
+  const dott = () => {
+    setNum (num + '.')
+  }
+  const deleteSymbol = () => {
+    setNum(num.slice(0, num.length - 1));
+  };
   const clearInput = () => {
     setNum("");
     setOperator("");
@@ -40,6 +46,21 @@ function Calculator() {
       setNum("");
       setOperator("");
       setOperator(e.target.value);
+    } else if (operator !== "") {
+      if (operator === "÷") {
+        setOldNum(+oldNum / +num);
+        setNum("");
+      } else if (operator === "×") {
+        setOldNum(+oldNum * +num);
+        setNum("");
+      } else if (operator === "-") {
+        setOldNum(+oldNum - +num);
+        setNum("");
+      } else if (operator === "+") {
+        setOldNum(+oldNum + +num);
+        setNum(+oldNum + +num);
+        setNum("");
+      }
     }
     return;
   };
@@ -70,7 +91,9 @@ function Calculator() {
   return (
     <div className={styles.content}>
       <input placeholder="0" className={styless.textArea} value={num} />
-      <button className={styless.deleteButton}>⌫</button>
+      <button className={styless.deleteButton} onClick={deleteSymbol}>
+        ⌫
+      </button>
       <div>
         <button className={styless.headButton} onClick={clearInput}>
           AC
@@ -147,7 +170,7 @@ function Calculator() {
         <button className={styless.zerroButton} value={0} onClick={buttonClick}>
           0
         </button>
-        <button className={styless.mainButtons}>,</button>
+        <button className={styless.mainButtons} onClick = {dott}>,</button>
         <button className={styless.mainButtons} onClick={calculate}>
           =
         </button>
