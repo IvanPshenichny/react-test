@@ -20,7 +20,8 @@ function Calculator() {
     setNum (num + '.')
   }
   const deleteSymbol = () => {
-    setNum(num.slice(0, num.length - 1));
+    let symbol = String(num)
+    setNum(symbol.substring(0, symbol.length - 1));
   };
   const clearInput = () => {
     setNum("");
@@ -50,16 +51,20 @@ function Calculator() {
       if (operator === "÷") {
         setOldNum(+oldNum / +num);
         setNum("");
+        setOperator(e.target.value);
       } else if (operator === "×") {
         setOldNum(+oldNum * +num);
         setNum("");
+        setOperator(e.target.value);
       } else if (operator === "-") {
         setOldNum(+oldNum - +num);
         setNum("");
+        setOperator(e.target.value);
       } else if (operator === "+") {
         setOldNum(+oldNum + +num);
         setNum(+oldNum + +num);
         setNum("");
+        setOperator(e.target.value);
       }
     }
     return;
