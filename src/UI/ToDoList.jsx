@@ -20,20 +20,19 @@ function ToDo() {
     SetInputValue(e.target.value);
   };
   const AddToDo = () => {
-    if (InputValue.length>0) {
-    ChangeToDoList([
-      ...ToDoState,
-      {
-        id: ToDoState.length + 1,
-        value: InputValue,
-        editing: false,
-        disabled: false,
-      },
-    ]);
-    SetInputValue("");
-  }
-
-};
+    if (InputValue.length > 0) {
+      ChangeToDoList([
+        ...ToDoState,
+        {
+          id: ToDoState.length + 1,
+          value: InputValue,
+          editing: false,
+          disabled: false,
+        },
+      ]);
+      SetInputValue("");
+    }
+  };
 
   const DeleteToDo = (id) => {
     ChangeToDoList(ToDoState.filter((item) => item.id !== id));
@@ -49,7 +48,7 @@ function ToDo() {
       }
       return item;
     });
-    
+
     ChangeToDoList(newList);
     setEditing(true);
   };
@@ -75,7 +74,11 @@ function ToDo() {
       <div>
         {item.value}
           
-        <button onClick={() => DeleteToDo(item.id)}>Delete</button>
+        <button 
+        onClick={() => DeleteToDo(item.id)} 
+        disabled={item.disabled}>
+          Delete
+        </button>
         <button
           disabled={item.disabled}
           onClick={() => EditToDoItem(item, item.id)}
